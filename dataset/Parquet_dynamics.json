@@ -1,0 +1,41 @@
+{
+	"name": "Parquet_dynamics",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "datalake",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"schema": {
+				"type": "string"
+			},
+			"file": {
+				"type": "string"
+			},
+			"table": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@dataset().table",
+					"type": "Expression"
+				},
+				"folderPath": {
+					"value": "@dataset().file",
+					"type": "Expression"
+				},
+				"fileSystem": {
+					"value": "@dataset().schema",
+					"type": "Expression"
+				}
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	}
+}

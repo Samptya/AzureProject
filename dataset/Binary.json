@@ -1,0 +1,39 @@
+{
+	"name": "Binary",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "datalake",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"schema": {
+				"type": "string"
+			},
+			"file": {
+				"type": "string"
+			},
+			"tale": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@dataset().tale",
+					"type": "Expression"
+				},
+				"folderPath": {
+					"value": "@dataset().file",
+					"type": "Expression"
+				},
+				"fileSystem": {
+					"value": "@dataset().schema",
+					"type": "Expression"
+				}
+			}
+		}
+	}
+}

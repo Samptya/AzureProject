@@ -1,0 +1,40 @@
+{
+	"name": "Json_file",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "datalake",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"directory": {
+				"type": "string"
+			},
+			"file": {
+				"type": "string"
+			},
+			"cdc": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@dataset().cdc",
+					"type": "Expression"
+				},
+				"folderPath": {
+					"value": "@dataset().file",
+					"type": "Expression"
+				},
+				"fileSystem": {
+					"value": "@dataset().directory",
+					"type": "Expression"
+				}
+			}
+		},
+		"schema": {}
+	}
+}
